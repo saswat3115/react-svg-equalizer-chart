@@ -21,6 +21,19 @@ const VerticalBar = ({ length, startPoint, color, title }) => {
   );
 };
 
+const VerticalCenterLine = ({ centerPoint }) => {
+  return (
+    <line
+      x1={centerPoint}
+      y1={20}
+      x2={centerPoint}
+      y2={220}
+      stroke="rgba(20, 45, 54, .3)"
+      strokeDasharray={2}
+    />
+  );
+};
+
 const Chart = ({ data }) => {
   const H = 240;
   const W = 240;
@@ -46,14 +59,7 @@ const Chart = ({ data }) => {
           />
         );
       })}
-      <line
-        x1={centerX - GAP / 2}
-        y1={20}
-        x2={centerX - GAP / 2}
-        y2={220}
-        stroke="rgba(20, 45, 54, .3)"
-        strokeDasharray={2}
-      />
+      <VerticalCenterLine centerPoint={centerX - GAP / 2} />
     </svg>
   );
 };
