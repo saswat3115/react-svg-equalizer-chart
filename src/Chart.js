@@ -23,14 +23,17 @@ const VerticalBar = ({ length, startPoint, color, title }) => {
 
 const VerticalCenterLine = ({ centerPoint }) => {
   return (
-    <line
-      x1={centerPoint}
-      y1={20}
-      x2={centerPoint}
-      y2={220}
-      stroke="rgba(20, 45, 54, .3)"
-      strokeDasharray={2}
-    />
+    <g>
+      <line
+        x1={centerPoint}
+        y1={20}
+        x2={centerPoint}
+        y2={220}
+        stroke="rgba(20, 45, 54, .3)"
+        strokeDasharray={2}
+      />
+      <circle cx={centerPoint} cy={220} r={2} fill={`rgba(20, 45, 54, .5)`} />
+    </g>
   );
 };
 
