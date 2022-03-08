@@ -47,11 +47,11 @@ const Chart = ({ data }) => {
         );
       })}
       <line
-        x1={centerX}
+        x1={centerX - GAP / 2}
         y1={20}
-        x2={centerX}
+        x2={centerX - GAP / 2}
         y2={220}
-        stroke="rgba(20, 45, 54, .4)"
+        stroke="rgba(20, 45, 54, .3)"
         strokeDasharray={2}
       />
     </svg>
