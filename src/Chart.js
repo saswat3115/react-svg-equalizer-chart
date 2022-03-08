@@ -25,8 +25,9 @@ const Chart = ({ data }) => {
   const H = 240;
   const W = 240;
   const centerY = 120;
+  const centerX = 120;
   const GAP = 20;
-  const startPointX = 20;
+  const startPointX = centerX - (Object.keys(data).length / 2) * GAP;
 
   return (
     <svg height="100%" width="100%" viewBox={`0 0 ${H} ${W}`}>
@@ -45,6 +46,14 @@ const Chart = ({ data }) => {
           />
         );
       })}
+      <line
+        x1={centerX}
+        y1={20}
+        x2={centerX}
+        y2={220}
+        stroke="rgba(20, 45, 54, .4)"
+        strokeDasharray={2}
+      />
     </svg>
   );
 };
