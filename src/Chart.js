@@ -97,7 +97,12 @@ const Chart = ({ data, selected }) => {
       onMouseMove={onDrag}
       onMouseUp={dragEnd}
     >
-      <g style={{ transform: `translateX(${dragDiff}px)` }}>
+      <g
+        style={{
+          transform: `translateX(${dragDiff}px)`,
+          transition: 'all .2s ease-in-out',
+        }}
+      >
         {Object.keys(data).map((item, i) => {
           const { color, title, amount } = data[item];
           return (
