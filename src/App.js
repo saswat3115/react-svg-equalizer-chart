@@ -20,8 +20,8 @@ const data = {
 export default function App() {
   return (
     <div className="chart">
-      {/* <Chart data={data} selected={6} /> */}
-      <LineChart />
+      <Chart data={data} selected={6} />
+      {/* <LineChart /> */}
     </div>
   );
 }

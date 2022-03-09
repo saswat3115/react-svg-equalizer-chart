@@ -63,24 +63,35 @@ const Chart = ({ data, selected }) => {
   const onDrag = (e) => {
     if (isDragging) {
       if (e.touches && e.touches[0]) {
-        // setThumbLeft(
-        // 	Math.min(
-        // 		Math.max(0, e.touches[0].clientX - startX),
-        // 		container.width - thumb.width / 2
-        // 	)
-        // );
         const diff = startX - e.touches[0].clientX;
-        setDragDiff(-diff);
+        if (-101 < diff && diff < 101) {
+          setDragDiff(-diff);
+        }
       } else {
         const diff = startX - e.clientX;
-
-        setDragDiff(-diff);
+        if (-101 < diff && diff < 101) {
+          setDragDiff(-diff);
+        }
       }
     }
   };
 
   const dragEnd = () => {
     setIsDragging(false);
+    console.log(dragDiff);
+    const mod = dragDiff > 0 ? dragDiff : -1 * dragDiff;
+    const noOfBarMoved = Math.ceil(mod / GAP);
+    if (dragDiff > 0) {
+      setCurrent(current - noOfBarMoved < 1 ? 1 : current - noOfBarMoved);
+      setDragDiff(0);
+    } else {
+      setCurrent(
+        current + noOfBarMoved > Object.keys(data).length
+          ? Object.keys(data).length
+          : current + noOfBarMoved
+      );
+      setDragDiff(0);
+    }
   };
 
   return (

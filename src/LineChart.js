@@ -43,7 +43,7 @@ const option = {
     title: {
       text: '',
     },
-    uniqueNames: true,
+    // uniqueNames: true,
     // labels: {
     // 	formatter: (item: any) => {
     // 		const [dd, MMM, yyyy] = format(item.value, 'dd MMM yyyy').split(' ');
