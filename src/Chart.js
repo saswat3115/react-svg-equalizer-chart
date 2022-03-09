@@ -38,7 +38,7 @@ const CrosshairLine = ({ centerPoint }) => {
 };
 
 const Axis = ({ x, centerY, data, bgX }) => {
-  const GAP = 20;
+  const GAP = 30;
   const startPointY = centerY - data.indexOf(0) * GAP;
 
   return (
@@ -53,10 +53,10 @@ const Axis = ({ x, centerY, data, bgX }) => {
       <g zIndex="2">
         {data.map((item, i) => (
           <text
-            key={item}
+            key={i}
             x={x}
             y={startPointY + i * GAP}
-            fontSize={7}
+            fontSize={8}
             fill="gray"
           >
             {item}
@@ -112,7 +112,7 @@ const Chart = ({ data, selected }) => {
     const mod = dragDiff > 0 ? dragDiff : -1 * dragDiff;
     let noOfBarMoved = Math.floor(mod / GAP);
     const nearBarFragment = mod % GAP;
-    if (nearBarFragment > 10) {
+    if (nearBarFragment > GAP / 2) {
       noOfBarMoved = noOfBarMoved + 1;
     }
     if (dragDiff > 0) {
