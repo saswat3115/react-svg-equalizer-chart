@@ -36,9 +36,11 @@ const VerticalCenterLine = ({ centerPoint }) => {
   );
 };
 
-// const Axis = ({ x, }) => {
-
-// }
+const H = 240;
+const W = 240;
+const centerY = 120;
+const centerX = 120;
+const GAP = 20;
 
 const Chart = ({ data, selected }) => {
   const [current, setCurrent] = useState(selected);
@@ -46,11 +48,6 @@ const Chart = ({ data, selected }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragDiff, setDragDiff] = useState(0);
 
-  const H = 240;
-  const W = 240;
-  const centerY = 120;
-  const centerX = 120;
-  const GAP = 20;
   const startPointX = centerX - current * GAP;
 
   const startDrag = (e) => {
@@ -76,6 +73,7 @@ const Chart = ({ data, selected }) => {
         setDragDiff(-diff);
       } else {
         const diff = startX - e.clientX;
+
         setDragDiff(-diff);
       }
     }
