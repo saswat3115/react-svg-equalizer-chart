@@ -37,23 +37,32 @@ const CrosshairLine = ({ centerPoint }) => {
   );
 };
 
-const Axis = ({ x, centerY, data }) => {
+const Axis = ({ x, centerY, data, bgX }) => {
   const GAP = 20;
   const startPointY = centerY - data.indexOf(0) * GAP;
 
   return (
     <g>
-      {data.map((item, i) => (
-        <text
-          key={item}
-          x={x}
-          y={startPointY + i * GAP}
-          fontSize={7}
-          fill="gray"
-        >
-          {item}
-        </text>
-      ))}
+      <rect
+        className="axis-bg"
+        x={bgX}
+        y={startPointY}
+        height={data.length * GAP}
+        width={20}
+      />
+      <g zIndex="2">
+        {data.map((item, i) => (
+          <text
+            key={item}
+            x={x}
+            y={startPointY + i * GAP}
+            fontSize={7}
+            fill="gray"
+          >
+            {item}
+          </text>
+        ))}
+      </g>
     </g>
   );
 };
@@ -155,8 +164,13 @@ const Chart = ({ data, selected }) => {
         })}
       </g>
       <CrosshairLine centerPoint={centerX - GAP} />
-      <Axis centerY={centerY} x={4} data={[1.5, 1, 0.5, 0, 0.5, 1]} />
-      <Axis centerY={centerY} x={244} data={[150, 100, 50, 0, 50, 100]} />
+      <Axis centerY={centerY} x={4} data={[1.5, 1, 0.5, 0, 0.5, 1]} bgX={0} />
+      <Axis
+        centerY={centerY}
+        x={244}
+        data={[150, 100, 50, 0, 50, 100]}
+        bgX={W - 20}
+      />
     </svg>
   );
 };
