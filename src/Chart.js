@@ -21,7 +21,7 @@ const VerticalBar = ({ length, startPoint, color, title, selected }) => {
   );
 };
 
-const VerticalCenterLine = ({ centerPoint }) => {
+const CrosshairLine = ({ centerPoint }) => {
   return (
     <g>
       <line
@@ -37,10 +37,31 @@ const VerticalCenterLine = ({ centerPoint }) => {
   );
 };
 
-const H = 240;
-const W = 240;
-const centerY = 120;
-const centerX = 120;
+const Axis = ({ x, centerY, data }) => {
+  const GAP = 20;
+  const startPointY = centerY - data.indexOf(0) * GAP;
+
+  return (
+    <g>
+      {data.map((item, i) => (
+        <text
+          key={item}
+          x={x}
+          y={startPointY + i * GAP}
+          fontSize={7}
+          fill="gray"
+        >
+          {item}
+        </text>
+      ))}
+    </g>
+  );
+};
+
+const H = 260;
+const W = 260;
+const centerY = H / 2;
+const centerX = W / 2;
 const GAP = 20;
 
 const Chart = ({ data, selected }) => {
@@ -100,8 +121,8 @@ const Chart = ({ data, selected }) => {
 
   return (
     <svg
-      height="100%"
-      width="100%"
+      // height="240"
+      // width="240"
       viewBox={`0 0 ${H} ${W}`}
       onTouchStart={startDrag}
       onTouchMove={onDrag}
@@ -133,7 +154,9 @@ const Chart = ({ data, selected }) => {
           );
         })}
       </g>
-      <VerticalCenterLine centerPoint={centerX - GAP} />
+      <CrosshairLine centerPoint={centerX - GAP} />
+      <Axis centerY={centerY} x={4} data={[1.5, 1, 0.5, 0, 0.5, 1]} />
+      <Axis centerY={centerY} x={244} data={[150, 100, 50, 0, 50, 100]} />
     </svg>
   );
 };
