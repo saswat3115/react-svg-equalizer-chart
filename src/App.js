@@ -20,7 +20,7 @@ const data = {
 export default function App() {
   return (
     <div className="chart">
-      <Chart data={data} selected={6} />
+      <Chart data={data} selected={5} />
       {/* <LineChart /> */}
     </div>
   );

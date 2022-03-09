@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const VerticalBar = ({ length, startPoint, color, title }) => {
+const VerticalBar = ({ length, startPoint, color, title, selected }) => {
   const moveY = startPoint.y - length;
   return (
     <g>
@@ -11,6 +11,7 @@ const VerticalBar = ({ length, startPoint, color, title }) => {
         strokeLinejoin="round"
         strokeLinecap="round"
         fill="none"
+        className={selected ? 'selected' : ''}
       />
       <circle cx={startPoint.x} cy={startPoint.y} r={4} fill="white" />
       <text x={startPoint.x - 2} y={startPoint.y + 2} fontSize={5}>
@@ -127,6 +128,7 @@ const Chart = ({ data, selected }) => {
                 x: startPointX + i * GAP,
                 y: centerY,
               }}
+              selected={item == current}
             />
           );
         })}
