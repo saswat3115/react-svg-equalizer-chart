@@ -72,8 +72,9 @@ const Chart = ({ data, selected }) => {
         // 		container.width - thumb.width / 2
         // 	)
         // );
+        const diff = startX - e.touches[0].clientX;
+        setDragDiff(-diff);
       } else {
-        console.log({ startX, clientX: e.clientX, dragDiff });
         const diff = startX - e.clientX;
         setDragDiff(-diff);
       }
@@ -89,6 +90,9 @@ const Chart = ({ data, selected }) => {
       height="100%"
       width="100%"
       viewBox={`0 0 ${H} ${W}`}
+      onTouchStart={startDrag}
+      onTouchMove={onDrag}
+      onTouchEnd={dragEnd}
       onMouseDown={startDrag}
       onMouseMove={onDrag}
       onMouseUp={dragEnd}
