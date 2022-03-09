@@ -2,6 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { format } from 'date-fns';
+import { uniq } from 'lodash';
 
 const data = [
   { d: '2019-01-01', v: 1000 },
@@ -20,6 +21,9 @@ const data = [
   { d: '2021-04-01', v: 4000 },
 ];
 
+const years = uniq(data.map((item) => new Date(item.d).getFullYear()));
+console.log(years);
+
 const option = {
   chart: {
     height: '200px',
@@ -35,10 +39,11 @@ const option = {
   },
   xAxis: {
     type: 'category',
-    categories: data.map((item) => new Date(item.d).getFullYear()),
+    categories: years, // uniq(data.map((item) => new Date(item.d).getFullYear())),
     title: {
       text: '',
     },
+    uniqueNames: true,
     // labels: {
     // 	formatter: (item: any) => {
     // 		const [dd, MMM, yyyy] = format(item.value, 'dd MMM yyyy').split(' ');
