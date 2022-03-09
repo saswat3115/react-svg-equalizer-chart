@@ -47,7 +47,7 @@ const Chart = ({ data }) => {
   const centerY = 120;
   const centerX = 120;
   const GAP = 20;
-  const startPointX = centerX - (Object.keys(data).length / 2) * GAP;
+  const startPointX = centerX - Math.ceil(Object.keys(data).length / 2) * GAP;
 
   return (
     <svg height="100%" width="100%" viewBox={`0 0 ${H} ${W}`}>
@@ -66,7 +66,7 @@ const Chart = ({ data }) => {
           />
         );
       })}
-      <VerticalCenterLine centerPoint={centerX - GAP / 2} />
+      <VerticalCenterLine centerPoint={centerX - GAP} />
     </svg>
   );
 };
