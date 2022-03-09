@@ -78,7 +78,6 @@ const Chart = ({ data, selected }) => {
 
   const dragEnd = () => {
     setIsDragging(false);
-    console.log(dragDiff);
     const mod = dragDiff > 0 ? dragDiff : -1 * dragDiff;
     let noOfBarMoved = Math.floor(mod / GAP);
     const nearBarFragment = mod % GAP;
