@@ -37,6 +37,10 @@ const VerticalCenterLine = ({ centerPoint }) => {
   );
 };
 
+// const Axis = ({ x, }) => {
+
+// }
+
 const Chart = ({ data }) => {
   const H = 240;
   const W = 240;
