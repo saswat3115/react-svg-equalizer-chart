@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import Chart from './Chart';
+import LineChart from './LineChart';
 
 const data = {
   1: { title: 'M', amount: 40, color: '#F8C630' },
@@ -19,7 +20,8 @@ const data = {
 export default function App() {
   return (
     <div className="chart">
-      <Chart data={data} selected={6} />
+      {/* <Chart data={data} selected={6} /> */}
+      <LineChart />
     </div>
   );
 }
