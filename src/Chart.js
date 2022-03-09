@@ -80,7 +80,11 @@ const Chart = ({ data, selected }) => {
     setIsDragging(false);
     console.log(dragDiff);
     const mod = dragDiff > 0 ? dragDiff : -1 * dragDiff;
-    const noOfBarMoved = Math.ceil(mod / GAP);
+    let noOfBarMoved = Math.floor(mod / GAP);
+    const nearBarFragment = mod % GAP;
+    if (nearBarFragment > 10) {
+      noOfBarMoved = noOfBarMoved + 1;
+    }
     if (dragDiff > 0) {
       setCurrent(current - noOfBarMoved < 1 ? 1 : current - noOfBarMoved);
       setDragDiff(0);
