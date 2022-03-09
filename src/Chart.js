@@ -100,7 +100,7 @@ const Chart = ({ data, selected }) => {
       <g
         style={{
           transform: `translateX(${dragDiff}px)`,
-          transition: 'all .2s ease-in-out',
+          transition: 'all',
         }}
       >
         {Object.keys(data).map((item, i) => {
